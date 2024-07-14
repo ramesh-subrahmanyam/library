@@ -42,7 +42,7 @@ class OptunaStudy:
         plt.grid(True)
         plt.show()
 
-    def display_top_trials(self, context_fields):
+    def display_top_trials(self, context_fields, top_N=5):
         """
         Display the top trials based on objective value and parameter values.
 
@@ -55,9 +55,6 @@ class OptunaStudy:
         # Extract and sort trials by objective value (highest to lowest)
         sorted_trials = sorted(self.study.trials, key=lambda x: x.value, reverse=True)
         
-        # Define the number of top trials to display
-        top_N = 5
-
         # Extract context information for the top trials
         contexts = [trial.user_attrs["context"] for trial in sorted_trials[:top_N]]
 
